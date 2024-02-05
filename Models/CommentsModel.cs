@@ -2,7 +2,7 @@ namespace mom4.Models {
 
     public class CommentModel {
 
-        public int CommentId { get; set; }
+        public int Id { get; set; }
 
         public string? Comment { get; set; }
 

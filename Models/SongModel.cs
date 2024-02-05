@@ -4,7 +4,7 @@ namespace mom4.Models{
 
     public class SongModel {
 
-        public int SongId { get; set; }
+        public int Id { get; set; }
 
         public string? Artist { get; set; }
         public string? Title { get; set; }
