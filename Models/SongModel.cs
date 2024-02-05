@@ -13,7 +13,7 @@ namespace mom4.Models{
 
         public string? Category { get; set; }
 
-        List<CommentModel>? Comments {get; set;}
+        public List<CommentModel>? Comments {get; set;}
 
 
     }

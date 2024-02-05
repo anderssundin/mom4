@@ -22,11 +22,27 @@ namespace mom4.Controllers
         }
 
         // GET: api/Song
-        [HttpGet]
-        public async Task<ActionResult<IEnumerable<SongModel>>> GetSongs()
+       [HttpGet]
+public async Task<ActionResult<IEnumerable<SongModel>>> GetSongs()
+{
+    var songs = await _context.Songs.Include(song => song.Comments).ToListAsync();
+
+    var song = songs.Select(song => new SongModel
+    {
+        Id = song.Id,
+        Artist = song.Artist,
+        Title = song.Title,
+        Length = song.Length,
+        Category = song.Category,
+        Comments = song.Comments.Select(comment => new CommentModel
         {
-            return await _context.Songs.ToListAsync();
-        }
+            Id = comment.Id,
+            Comment = comment.Comment
+        }).ToList()
+    }).ToList();
+
+    return song;
+}
 
         // GET: api/Song/5
         [HttpGet("{id}")]
