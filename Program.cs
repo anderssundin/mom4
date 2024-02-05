@@ -12,14 +12,14 @@ builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddDbContext<ApplicationDbContext> ( options => {
         options.UseSqlite(builder.Configuration.GetConnectionString("DefaultDbString"));
 });
-
+builder.Services.AddControllers();
 var app = builder.Build();
 
 
 
 app.UseHttpsRedirection();
 
-
+app.MapControllers(); // Map controllers
 
 app.Run();
 
